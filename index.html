@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a1628">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>🏆 Porra Caverna Mundial 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+  :root {
+    --bg:        #0a1628;
+    --surface:   #111f3a;
+    --surface2:  #162848;
+    --border:    #1e3560;
+    --gold:      #f5c842;
+    --gold2:     #e0a800;
+    --green:     #2ecc71;
+    --red:       #e74c3c;
+    --blue:      #3498db;
+    --text:      #e8eaf0;
+    --muted:     #8899bb;
+    --accent:    #f5c842;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    font-size: 14px;
+  }
+
+  header {
+    background: linear-gradient(135deg, #0a1628 0%, #162848 50%, #0a1628 100%);
+    border-bottom: 2px solid var(--gold);
+    padding: 16px 20px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+
+  .header-badge { font-size: 28px; line-height: 1; }
+
+  .header-title h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(16px, 4vw, 22px);
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.5px;
+    line-height: 1.1;
+  }
+
+  .header-title p {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  nav {
+    display: flex;
+    gap: 2px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  nav::-webkit-scrollbar { display: none; }
+
+  .tab-btn {
+    flex-shrink: 0;
+    padding: 9px 14px;
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+
+  .tab-btn:hover { color: var(--text); }
+  .tab-btn.active { color: var(--gold); border-bottom-color: var(--gold); font-weight: 600; }
+
+  main { padding: 16px; max-width: 900px; margin: 0 auto; }
+
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+    margin-bottom: 14px;
+  }
+
+  .card-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .ranking-table { width: 100%; border-collapse: collapse; }
+
+  .ranking-table th {
+    font-family: 'Oswald', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--muted);
+    padding: 8px 10px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .ranking-table td {
+    padding: 9px 10px;
+    border-bottom: 1px solid rgba(30,53,96,0.5);
+    font-size: 13px;
+  }
+
+  .ranking-table tr:last-child td { border-bottom: none; }
+  .ranking-table tr:hover td { background: rgba(245,200,66,0.04); }
+
+  .pos-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    font-family: 'Oswald', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .pos-1 { background: var(--gold); color: #0a1628; }
+  .pos-2 { background: #c0c0c0; color: #0a1628; }
+  .pos-3 { background: #cd7f32; color: #fff; }
+  .pos-other { background: var(--surface2); color: var(--muted); }
+
+  .pts-positive { color: var(--green); font-weight: 600; }
+  .pts-zero     { color: var(--muted); }
+  .pts-negative { color: var(--red); font-weight: 600; }
+
+  .podium {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 8px;
+    padding: 20px 10px 10px;
+  }
+
+  .podium-item { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+
+  .podium-avatar {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Oswald', sans-serif;
+    font-size: 18px; font-weight: 700;
+    border: 2px solid;
+  }
+
+  .podium-1 .podium-avatar { background: rgba(245,200,66,0.15); border-color: var(--gold); color: var(--gold); width: 52px; height: 52px; font-size: 22px; }
+  .podium-2 .podium-avatar { background: rgba(192,192,192,0.1); border-color: #c0c0c0; color: #c0c0c0; }
+  .podium-3 .podium-avatar { background: rgba(205,127,50,0.1); border-color: #cd7f32; color: #cd7f32; }
+
+  .podium-name { font-size: 11px; font-weight: 500; text-align: center; max-width: 70px; line-height: 1.2; }
+  .podium-pts  { font-family: 'Oswald', sans-serif; font-size: 18px; font-weight: 700; color: var(--gold); }
+  .podium-1 .podium-pts { font-size: 22px; }
+
+  .podium-block {
+    border-radius: 6px 6px 0 0;
+    width: 70px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px; font-weight: 700;
+  }
+
+  .podium-2 .podium-block { background: rgba(192,192,192,0.12); height: 50px; color: #c0c0c0; }
+  .podium-1 .podium-block { background: rgba(245,200,66,0.12); height: 70px; color: var(--gold); width: 80px; }
+  .podium-3 .podium-block { background: rgba(205,127,50,0.1); height: 35px; color: #cd7f32; }
+
+  .participant-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 10px;
+  }
+
+  .participant-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px;
+    transition: border-color 0.2s;
+  }
+
+  .participant-card:hover { border-color: var(--gold); }
+
+  .pc-header {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 10px; padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .pc-avatar {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold2), var(--gold));
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Oswald', sans-serif;
+    font-size: 15px; font-weight: 700;
+    color: #0a1628; flex-shrink: 0;
+  }
+
+  .pc-name { font-weight: 600; font-size: 13px; }
+  .pc-pts  { font-family: 'Oswald', sans-serif; font-size: 20px; font-weight: 700; margin-left: auto; }
+
+  .pc-teams { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 8px; }
+
+  .team-chip {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 2px 7px;
+    font-size: 11px;
+  }
+
+  .scorer-chip {
+    background: rgba(245,200,66,0.08);
+    border: 1px solid rgba(245,200,66,0.25);
+    border-radius: 4px;
+    padding: 2px 7px;
+    font-size: 11px;
+    color: var(--gold);
+  }
+
+  .pc-section-label {
+    font-size: 10px; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 0.6px;
+    margin-bottom: 4px; font-weight: 500;
+  }
+
+  .grupos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+  }
+
+  .grupo-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .grupo-header {
+    background: linear-gradient(90deg, var(--surface) 0%, var(--border) 100%);
+    padding: 8px 12px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 12px; font-weight: 600;
+    color: var(--gold); letter-spacing: 1px;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .grupo-equipo {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 7px 12px;
+    border-bottom: 1px solid rgba(30,53,96,0.4);
+    font-size: 12px;
+  }
+
+  .grupo-equipo:last-child { border-bottom: none; }
+  .eq-ranking { font-size: 10px; color: var(--muted); font-family: 'Oswald', sans-serif; }
+  .eq-ranking-top { color: var(--gold); }
+
+  .grporra-badge {
+    font-size: 10px; padding: 1px 5px;
+    border-radius: 3px;
+    font-family: 'Oswald', sans-serif; font-weight: 600;
+  }
+
+  .gr1 { background: rgba(52,152,219,0.2); color: #3498db; }
+  .gr2 { background: rgba(46,204,113,0.2); color: #2ecc71; }
+  .gr3 { background: rgba(155,89,182,0.2); color: #9b59b6; }
+  .gr4 { background: rgba(231,76,60,0.2); color: #e74c3c; }
+  .gr5 { background: rgba(230,126,34,0.2); color: #e67e22; }
+  .gr6 { background: rgba(245,200,66,0.2); color: var(--gold); }
+  .gr7 { background: rgba(26,188,156,0.2); color: #1abc9c; }
+  .gr8 { background: rgba(236,240,241,0.15); color: #bdc3c7; }
+
+  .scorer-table { width: 100%; border-collapse: collapse; }
+
+  .scorer-table th {
+    font-family: 'Oswald', sans-serif;
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.8px;
+    color: var(--muted); padding: 8px 10px; text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .scorer-table td {
+    padding: 8px 10px;
+    border-bottom: 1px solid rgba(30,53,96,0.4);
+    font-size: 13px;
+  }
+
+  .scorer-table tr:last-child td { border-bottom: none; }
+  .goals-display { font-family: 'Oswald', sans-serif; font-size: 18px; font-weight: 700; color: var(--green); }
+  .goals-zero { color: var(--muted); font-size: 14px; }
+  .owners-list { display: flex; flex-wrap: wrap; gap: 4px; }
+
+  .owner-tag {
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: 3px; padding: 1px 6px; font-size: 11px;
+  }
+
+  .exacto-table { width: 100%; border-collapse: collapse; }
+
+  .exacto-table th {
+    font-family: 'Oswald', sans-serif;
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.8px;
+    color: var(--muted); padding: 8px 10px; text-align: center;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .exacto-table th.left { text-align: left; }
+
+  .exacto-table td {
+    padding: 7px 10px;
+    border-bottom: 1px solid rgba(30,53,96,0.4);
+    font-size: 13px; text-align: center;
+  }
+
+  .exacto-table td.left { text-align: left; }
+  .exacto-table tr:last-child td { border-bottom: none; }
+  .score-cell { font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 600; color: var(--gold); }
+  .score-empty { color: var(--border); font-size: 12px; }
+  .exacto-pts { font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 700; }
+
+  .bases-section { border-left: 3px solid var(--gold); padding-left: 14px; margin-bottom: 16px; }
+
+  .bases-section h3 {
+    font-family: 'Oswald', sans-serif; font-size: 13px;
+    color: var(--gold); letter-spacing: 0.8px; margin-bottom: 8px; text-transform: uppercase;
+  }
+
+  .bases-item {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 6px 0; border-bottom: 1px solid rgba(30,53,96,0.4);
+    font-size: 13px; line-height: 1.4;
+  }
+
+  .bases-item:last-child { border-bottom: none; }
+  .bases-pts { font-family: 'Oswald', sans-serif; font-size: 14px; font-weight: 700; min-width: 36px; color: var(--gold); }
+  .bases-pts.neg { color: var(--red); }
+
+  .admin-panel {
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: 10px; padding: 20px;
+  }
+
+  .admin-title { font-family: 'Oswald', sans-serif; font-size: 16px; color: var(--gold); margin-bottom: 16px; }
+
+  .admin-row { margin-bottom: 12px; }
+
+  label {
+    display: block; font-size: 11px; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 0.6px;
+    margin-bottom: 5px; font-weight: 500;
+  }
+
+  input[type="text"], input[type="password"], input[type="number"], select {
+    width: 100%;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 6px; padding: 9px 12px;
+    color: var(--text); font-family: 'Inter', sans-serif;
+    font-size: 13px; outline: none; transition: border-color 0.2s;
+  }
+
+  input:focus, select:focus { border-color: var(--gold); }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 9px 18px; border: none; border-radius: 6px;
+    font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600;
+    cursor: pointer; transition: opacity 0.2s;
+  }
+
+  .btn:hover { opacity: 0.88; }
+  .btn-gold { background: var(--gold); color: #0a1628; }
+  .btn-danger { background: var(--red); color: #fff; }
+  .btn-sm { padding: 6px 12px; font-size: 12px; }
+
+  .alert { padding: 10px 14px; border-radius: 6px; font-size: 13px; margin-top: 10px; }
+  .alert-success { background: rgba(46,204,113,0.1); border: 1px solid rgba(46,204,113,0.3); color: var(--green); }
+  .alert-error   { background: rgba(231,76,60,0.1); border: 1px solid rgba(231,76,60,0.3); color: var(--red); }
+
+  .admin-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+  .score-inputs { display: flex; align-items: center; gap: 8px; }
+  .score-dash { font-family: 'Oswald', sans-serif; font-size: 20px; color: var(--muted); flex-shrink: 0; }
+
+  .admin-section-divider { height: 1px; background: var(--border); margin: 20px 0; }
+
+  .login-box {
+    max-width: 340px; margin: 40px auto;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: 28px; text-align: center;
+  }
+
+  .login-icon { font-size: 36px; margin-bottom: 12px; }
+  .login-title { font-family: 'Oswald', sans-serif; font-size: 20px; color: var(--gold); margin-bottom: 20px; }
+
+  .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 14px; }
+
+  .stat-box {
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: 8px; padding: 12px; text-align: center;
+  }
+
+  .stat-num { font-family: 'Oswald', sans-serif; font-size: 26px; font-weight: 700; color: var(--gold); line-height: 1; }
+  .stat-lbl { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 4px; }
+
+  @media (max-width: 480px) {
+    main { padding: 10px; }
+    .participant-grid { grid-template-columns: 1fr; }
+    .grupos-grid { grid-template-columns: repeat(2, 1fr); }
+    .admin-grid-2 { grid-template-columns: 1fr; }
+    .ranking-table th:nth-child(3), .ranking-table td:nth-child(3) { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-top">
+    <div class="header-badge">⚽</div>
+    <div class="header-title">
+      <h1>PORRA CAVERNA MUNDIAL 2026</h1>
+      <p>26 participantes · USA / CAN / MEX · Junio–Julio 2026</p>
+    </div>
+  </div>
+  <nav id="tabs">
+    <button class="tab-btn active" data-tab="clasificacion">🏆 Clasificación</button>
+    <button class="tab-btn" data-tab="participantes">👥 Participantes</button>
+    <button class="tab-btn" data-tab="equipos">🌍 Equipos</button>
+    <button class="tab-btn" data-tab="goleadores">⚽ Goleadores</button>
+    <button class="tab-btn" data-tab="exacto">🎯 Resultado Exacto</button>
+    <button class="tab-btn" data-tab="bases">📋 Bases</button>
+    <button class="tab-btn" data-tab="admin">🔧 Admin</button>
+  </nav>
+</header>
+
+<main>
+
+<div class="tab-panel active" id="tab-clasificacion">
+  <div class="stat-row">
+    <div class="stat-box"><div class="stat-num">26</div><div class="stat-lbl">Participantes</div></div>
+    <div class="stat-box"><div class="stat-num" id="stat-lider-pts">3</div><div class="stat-lbl">Pts líder</div></div>
+    <div class="stat-box"><div class="stat-num" id="stat-jornada">J1</div><div class="stat-lbl">Jornada</div></div>
+  </div>
+  <div class="card">
+    <div class="card-title">🥇 Podio Provisional</div>
+    <div class="podium" id="podium-display"></div>
+  </div>
+  <div class="card">
+    <div class="card-title">📊 Clasificación Completa</div>
+    <table class="ranking-table">
+      <thead>
+        <tr>
+          <th style="width:40px">Pos</th>
+          <th>Participante</th>
+          <th style="width:70px;text-align:right">Puntos</th>
+          <th style="width:50px;text-align:center">🏅</th>
+        </tr>
+      </thead>
+      <tbody id="ranking-body"></tbody>
+    </table>
+  </div>
+</div>
+
+<div class="tab-panel" id="tab-participantes">
+  <div class="card">
+    <div class="card-title">👥 Selecciones de los 26 Participantes</div>
+    <p style="font-size:12px;color:var(--muted);margin-bottom:14px;">Equipos y goleadores elegidos por cada participante.</p>
+  </div>
+  <div class="participant-grid" id="participantes-grid"></div>
+</div>
+
+<div class="tab-panel" id="tab-equipos">
+  <div class="card">
+    <div class="card-title">🌍 48 Equipos por Grupo de Porra</div>
+    <p style="font-size:12px;color:var(--muted);margin-bottom:6px;">Equipos repartidos en 8 grupos (GR_1–GR_8).</p>
+  </div>
+  <div class="grupos-grid" id="grupos-grid"></div>
+</div>
+
+<div class="tab-panel" id="tab-goleadores">
+  <div class="card">
+    <div class="card-title">⚽ Tabla de Goleadores</div>
+    <p style="font-size:12px;color:var(--muted);margin-bottom:14px;">+2 pts por cada gol (incluye prórroga, no penaltis).</p>
+    <table class="scorer-table">
+      <thead>
+        <tr>
+          <th>Jugador</th>
+          <th style="width:60px;text-align:center">Goles</th>
+          <th>Elegido por</th>
+        </tr>
+      </thead>
+      <tbody id="scorers-body"></tbody>
+    </table>
+  </div>
+</div>
+
+<div class="tab-panel" id="tab-exacto">
+  <div class="card">
+    <div class="card-title">🎯 Resultado Exacto — Semis y Final</div>
+    <p style="font-size:12px;color:var(--muted);margin-bottom:14px;">Acertar el marcador exacto (90 min) da <strong style="color:var(--gold)">+5 puntos</strong>.</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px;" id="real-results-display"></div>
+    <table class="exacto-table">
+      <thead>
+        <tr>
+          <th class="left" style="width:30px">Nº</th>
+          <th class="left">Participante</th>
+          <th>SF1</th>
+          <th>SF2</th>
+          <th>Final</th>
+          <th>+Pts</th>
+        </tr>
+      </thead>
+      <tbody id="exacto-body"></tbody>
+    </table>
+  </div>
+</div>
+
+<div class="tab-panel" id="tab-bases">
+  <div class="card">
+    <div class="card-title">📋 Bases de la Porra</div>
+    <div class="bases-section">
+      <h3>🎯 Elección Inicial</h3>
+      <div class="bases-item"><span class="bases-pts">11</span><span>Equipos: 1 del GR1 + 1 del GR2 + 1 del GR3 + 1 del GR4 + 2 del GR5 + 2 del GR6 + 1 del GR7 + 2 del GR8</span></div>
+      <div class="bases-item"><span class="bases-pts">5</span><span>Goleadores de tu elección</span></div>
+    </div>
+    <div class="bases-section">
+      <h3>📈 Puntuación</h3>
+      <div class="bases-item"><span class="bases-pts">+3</span><span>Victoria de equipo</span></div>
+      <div class="bases-item"><span class="bases-pts">+1</span><span>Empate de equipo</span></div>
+      <div class="bases-item"><span class="bases-pts neg">-1</span><span>Derrota de equipo</span></div>
+      <div class="bases-item"><span class="bases-pts">+2</span><span>Por cada gol del jugador elegido (incluye prórroga, NO penaltis)</span></div>
+      <div class="bases-item"><span class="bases-pts">+3</span><span>Por equipo que pasa de ronda</span></div>
+      <div class="bases-item"><span class="bases-pts">+5</span><span>Por equipo campeón</span></div>
+      <div class="bases-item"><span class="bases-pts">+5</span><span>Resultado exacto (90 min) en Semifinales y Final</span></div>
+    </div>
+    <div class="bases-section">
+      <h3>🏆 Premios</h3>
+      <div class="bases-item"><span class="bases-pts">60%</span><span>1.º clasificado</span></div>
+      <div class="bases-item"><span class="bases-pts">30%</span><span>2.º clasificado</span></div>
+      <div class="bases-item"><span class="bases-pts">10%</span><span>3.º clasificado</span></div>
+      <div class="bases-item"><span class="bases-pts" style="color:var(--green)">20€</span><span>Inscripción por participante</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="tab-panel" id="tab-admin">
+  <div id="login-container" class="login-box">
+    <div class="login-icon">🔐</div>
+    <div class="login-title">Panel de Administración</div>
+    <div class="admin-row">
+      <label>Contraseña</label>
+      <input type="password" id="admin-password" placeholder="Introduce la contraseña" onkeydown="if(event.key==='Enter')tryLogin()">
+    </div>
+    <button class="btn btn-gold" style="width:100%;margin-top:6px;justify-content:center" onclick="tryLogin()">Entrar</button>
+    <div id="login-error" class="alert alert-error" style="display:none;margin-top:10px">Contraseña incorrecta</div>
+  </div>
+  <div id="admin-container" style="display:none">
+    <div class="admin-panel">
+      <div class="admin-title">⚙️ Panel de Administración</div>
+      <div class="card-title" style="margin-bottom:10px">🏟️ Puntos de Equipo</div>
+      <div class="admin-row">
+        <label>Equipo</label>
+        <select id="admin-equipo"></select>
+      </div>
+      <div class="admin-row">
+        <label>Resultado</label>
+        <select id="admin-resultado">
+          <option value="3">Victoria (+3)</option>
+          <option value="1">Empate (+1)</option>
+          <option value="-1">Derrota (-1)</option>
+          <option value="3">Pasa de ronda (+3)</option>
+          <option value="5">Campeón (+5)</option>
+        </select>
+      </div>
+      <button class="btn btn-gold btn-sm" onclick="applyTeamResult()">✅ Aplicar</button>
+      <div class="admin-section-divider"></div>
+      <div class="card-title" style="margin-bottom:10px">⚽ Registrar Goles</div>
+      <div class="admin-grid-2">
+        <div class="admin-row">
+          <label>Jugador</label>
+          <select id="admin-jugador"></select>
+        </div>
+        <div class="admin-row">
+          <label>Goles</label>
+          <input type="number" id="admin-goles" value="1" min="1" max="10">
+        </div>
+      </div>
+      <button class="btn btn-gold btn-sm" onclick="applyGoals()">⚽ Registrar</button>
+      <div class="admin-section-divider"></div>
+      <div class="card-title" style="margin-bottom:10px">🎯 Resultado Exacto Real</div>
+      <div style="margin-bottom:12px">
+        <label>Semifinal 1</label>
+        <div class="score-inputs">
+          <input type="number" id="sf1-local" placeholder="0" min="0" max="20" style="max-width:60px;text-align:center">
+          <span class="score-dash">–</span>
+          <input type="number" id="sf1-visit" placeholder="0" min="0" max="20" style="max-width:60px;text-align:center">
+        </div>
+      </div>
+      <div style="margin-bottom:12px">
+        <label>Semifinal 2</label>
+        <div class="score-inputs">
+          <input type="number" id="sf2-local" placeholder="0" min="0" max="20" style="max-width:60px;text-align:center">
+          <span class="score-dash">–</span>
+          <input type="number" id="sf2-visit" placeholder="0" min="0" max="20" style="max-width:60px;text-align:center">
+        </div>
+      </div>
+      <div style="margin-bottom:12px">
+        <label>Final</label>
+        <div class="score-inputs">
+          <input type="number" id="final-local" placeholder="0" min="0" max="20" style="max-width:60px;text-align:center">
+          <span class="score-dash">–</span>
+          <input type="number" id="final-visit" placeholder="0" min="0" max="20" style="max-width:60px;text-align:center">
+        </div>
+      </div>
+      <button class="btn btn-gold btn-sm" onclick="applyExactScores()">🎯 Calcular</button>
+      <div class="admin-section-divider"></div>
+      <button class="btn btn-danger btn-sm" onclick="resetAll()">⚠️ Resetear todos los puntos</button>
+      <div id="admin-msg" class="alert" style="display:none;margin-top:14px"></div>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<script>
+const PARTICIPANTES_BASE = [
+  {nombre:"Jonatan Baraka",equipos:["Francia","Inglaterra","Alemania","Mexico","Japon","Suiza","Noruega","Costa de Marfil","Escocia","Sudáfrica","Bosnia y Herzegovina"],goleadores:["Messi","Mbappe","Kane","Haaland","Oyar"]},
+  {nombre:"Deivid",equipos:["Francia","Brasil","Alemania","Colombia","Iran","Turquia","Noruega","Argelia","Qatar","Sudáfrica","Nueva Zelanda"],goleadores:["Haaland","Mbappe","Dembele","Vinicius","Luis Díaz"]},
+  {nombre:"Gaizka Josu",equipos:["España","Portugal","Alemania","Senegal","Japon","Ecuador","Noruega","Paraguay","Tunez","Ghana","Irak"],goleadores:["Mbappe","Kane","Oyar","Voltemade","Julian"]},
+  {nombre:"Gaizka Nai",equipos:["España","Brasil","Alemania","Colombia","Japon","Korea","Noruega","Paraguay","Qatar","Arabia Saudita","Bosnia y Herzegovina"],goleadores:["Mbappe","Kane","Lamine","Messi","Vinicius"]},
+  {nombre:"Hugo",equipos:["España","Portugal","Alemania","Uruguay","Japon","Ecuador","Noruega","Canada","Escocia","Bosnia y Herzegovina","Ghana"],goleadores:["Mbappe","Julian","Oyar","Raphina","Luis Díaz"]},
+  {nombre:"Doval",equipos:["Francia","Portugal","Marruecos","Croacia","Turquia","Suiza","Noruega","Republica Checa","Tunez","Bosnia y Herzegovina","RD Congo"],goleadores:["Mbappe","Kane","Haaland","Cristiano","Vinicius"]},
+  {nombre:"Iñaki",equipos:["Francia","Inglaterra","Alemania","Senegal","Japon","Suiza","Noruega","Republica Checa","Qatar","Ghana","Arabia Saudita"],goleadores:["Mbappe","Kane","Oyar","Cristiano","Haaland"]},
+  {nombre:"Javi",equipos:["Francia","Portugal","Alemania","Croacia","Suiza","Turquia","Noruega","Republica Checa","Escocia","Irak","Curazao"],goleadores:["Mbappe","Kane","Cristiano","Messi","Oyar"]},
+  {nombre:"Jon Danel",equipos:["España","Portugal","Alemania","Colombia","Ecuador","Japon","Noruega","Egipto","Escocia","Arabia Saudita","Bosnia y Herzegovina"],goleadores:["Kane","Mbappe","Messi","Vinicius","Haaland"]},
+  {nombre:"Jon Paules",equipos:["Francia","Inglaterra","Marruecos","Uruguay","Suiza","Japon","Suecia","Republica Checa","Escocia","Ghana","Sudáfrica"],goleadores:["Mbappe","Kane","Haaland","Julian","Oyar"]},
+  {nombre:"Jose Garga",equipos:["Francia","Portugal","Alemania","Mexico","Japon","Ecuador","Noruega","Egipto","Qatar","Bosnia y Herzegovina","Sudáfrica"],goleadores:["Mbappe","Kane","Haaland","Oyar","Julian"]},
+  {nombre:"Josu",equipos:["España","Brasil","Marruecos","Senegal","Turquia","Iran","Noruega","Republica Checa","Escocia","Arabia Saudita","Ghana"],goleadores:["Mbappe","Kane","Messi","Oyar","Vinicius"]},
+  {nombre:"Juan",equipos:["Francia","Portugal","Alemania","Mexico","Turquia","Suiza","Argelia","Canada","Escocia","Bosnia y Herzegovina","Sudáfrica"],goleadores:["Mbappe","Kane","Havertz","Cristiano","Oyar"]},
+  {nombre:"Kitsu",equipos:["Francia","Portugal","Alemania","Colombia","Suiza","Austria","Egipto","Republica Checa","Qatar","Jordania","Bosnia y Herzegovina"],goleadores:["Havertz","Salah","Kane","Julian","Vinicius"]},
+  {nombre:"Markel",equipos:["Francia","Brasil","Alemania","Colombia","Suiza","Turquia","Canada","Egipto","Tunez","Bosnia y Herzegovina","Ghana"],goleadores:["Mbappe","Kane","Messi","Oyar","Vinicius"]},
+  {nombre:"Ruben",equipos:["España","Brasil","Alemania","Colombia","Suiza","Ecuador","Canada","Noruega","Escocia","Arabia Saudita","Bosnia y Herzegovina"],goleadores:["Mbappe","Kane","Haaland","Oyar","Cristiano"]},
+  {nombre:"Pedro Paules",equipos:["España","Brasil","Alemania","Mexico","Ecuador","Japon","Noruega","Argelia","Escocia","Ghana","Sudáfrica"],goleadores:["Mbappe","Kane","Haaland","Vinicius","Messi"]},
+  {nombre:"Pumuki",equipos:["España","Portugal","Paises Bajos","Colombia","Ecuador","Turquia","Republica Checa","Noruega","Escocia","Bosnia y Herzegovina","Ghana"],goleadores:["Mbappe","Kane","Oyar","Messi","Julian"]},
+  {nombre:"Ramos",equipos:["España","Portugal","Marruecos","Uruguay","Japon","Ecuador","Noruega","Canada","Escocia","Bosnia y Herzegovina","Arabia Saudita"],goleadores:["Mbappe","Kane","Oyar","Darwin","Luis Díaz"]},
+  {nombre:"Roman",equipos:["España","Portugal","Alemania","Uruguay","Ecuador","Japon","Suecia","Republica Checa","Escocia","Bosnia y Herzegovina","Ghana"],goleadores:["Kane","Messi","Raphina","Mbappe","Oyar"]},
+  {nombre:"Sergio Paules",equipos:["Argentina","Brasil","Alemania","Uruguay","Japon","Ecuador","Noruega","Suecia","Tunez","Bosnia y Herzegovina","Ghana"],goleadores:["Mbappe","Kane","Haaland","Cristiano","Vinicius"]},
+  {nombre:"Serlli",equipos:["España","Portugal","Paises Bajos","Colombia","Ecuador","Turquia","Noruega","Egipto","Qatar","Arabia Saudita","Sudáfrica"],goleadores:["Mbappe","Oyar","Kane","Cristiano","Messi"]},
+  {nombre:"Sergio Mateo",equipos:["España","Brasil","Paises Bajos","Estados Unidos","Japon","Suiza","Egipto","Canada","RD Congo","Bosnia y Herzegovina","Sudáfrica"],goleadores:["Mbappe","Raphina","Lamine","Kane","Julian"]},
+  {nombre:"Xabi",equipos:["España","Portugal","Marruecos","Colombia","Japon","Turquia","Egipto","Republica Checa","Qatar","Bosnia y Herzegovina","Ghana"],goleadores:["Mbappe","Ferran","Kane","Julian","Oyar"]},
+  {nombre:"Gorka",equipos:["Argentina","Brasil","Paises Bajos","Croacia","Turquia","Suiza","Noruega","Canada","Qatar","Ghana","Arabia Saudita"],goleadores:["Mbappe","Kane","Haaland","Cristiano","Vinicius"]},
+  {nombre:"Sergio Baraka",equipos:["España","Portugal","Alemania","Mexico","Japon","Suiza","Noruega","Canada","Escocia","Ghana","Sudafrica"],goleadores:["Mbappe","Kane","Haaland","Messi","Lamine"]}
+];
+
+const EQUIPOS_DATA = [
+  {nombre:"Francia",ranking:1,grupo:"I",grPorra:"GR_1"},
+  {nombre:"España",ranking:2,grupo:"H",grPorra:"GR_1"},
+  {nombre:"Argentina",ranking:3,grupo:"J",grPorra:"GR_1"},
+  {nombre:"Inglaterra",ranking:4,grupo:"L",grPorra:"GR_2"},
+  {nombre:"Portugal",ranking:5,grupo:"K",grPorra:"GR_2"},
+  {nombre:"Brasil",ranking:6,grupo:"C",grPorra:"GR_2"},
+  {nombre:"Paises Bajos",ranking:7,grupo:"F",grPorra:"GR_3"},
+  {nombre:"Marruecos",ranking:8,grupo:"C",grPorra:"GR_3"},
+  {nombre:"Belgica",ranking:9,grupo:"G",grPorra:"GR_3"},
+  {nombre:"Alemania",ranking:10,grupo:"E",grPorra:"GR_3"},
+  {nombre:"Croacia",ranking:11,grupo:"L",grPorra:"GR_4"},
+  {nombre:"Colombia",ranking:13,grupo:"K",grPorra:"GR_4"},
+  {nombre:"Senegal",ranking:14,grupo:"I",grPorra:"GR_4"},
+  {nombre:"Mexico",ranking:15,grupo:"A",grPorra:"GR_4"},
+  {nombre:"Estados Unidos",ranking:16,grupo:"D",grPorra:"GR_4"},
+  {nombre:"Uruguay",ranking:17,grupo:"H",grPorra:"GR_4"},
+  {nombre:"Japon",ranking:18,grupo:"F",grPorra:"GR_5"},
+  {nombre:"Suiza",ranking:19,grupo:"B",grPorra:"GR_5"},
+  {nombre:"Iran",ranking:21,grupo:"G",grPorra:"GR_5"},
+  {nombre:"Turquia",ranking:22,grupo:"D",grPorra:"GR_5"},
+  {nombre:"Ecuador",ranking:23,grupo:"E",grPorra:"GR_5"},
+  {nombre:"Austria",ranking:24,grupo:"J",grPorra:"GR_5"},
+  {nombre:"Corea del Sur",ranking:25,grupo:"A",grPorra:"GR_5"},
+  {nombre:"Australia",ranking:27,grupo:"D",grPorra:"GR_5"},
+  {nombre:"Argelia",ranking:28,grupo:"J",grPorra:"GR_6"},
+  {nombre:"Egipto",ranking:29,grupo:"G",grPorra:"GR_6"},
+  {nombre:"Canada",ranking:30,grupo:"B",grPorra:"GR_6"},
+  {nombre:"Noruega",ranking:31,grupo:"I",grPorra:"GR_6"},
+  {nombre:"Panama",ranking:33,grupo:"L",grPorra:"GR_6"},
+  {nombre:"Costa de Marfil",ranking:34,grupo:"E",grPorra:"GR_6"},
+  {nombre:"Suecia",ranking:38,grupo:"F",grPorra:"GR_6"},
+  {nombre:"Paraguay",ranking:40,grupo:"D",grPorra:"GR_6"},
+  {nombre:"Republica Checa",ranking:41,grupo:"A",grPorra:"GR_6"},
+  {nombre:"Escocia",ranking:43,grupo:"C",grPorra:"GR_7"},
+  {nombre:"Tunez",ranking:44,grupo:"F",grPorra:"GR_7"},
+  {nombre:"RD Congo",ranking:46,grupo:"K",grPorra:"GR_7"},
+  {nombre:"Uzbekistán",ranking:50,grupo:"K",grPorra:"GR_7"},
+  {nombre:"Qatar",ranking:55,grupo:"B",grPorra:"GR_7"},
+  {nombre:"Irak",ranking:57,grupo:"I",grPorra:"GR_8"},
+  {nombre:"Sudáfrica",ranking:60,grupo:"A",grPorra:"GR_8"},
+  {nombre:"Arabia Saudita",ranking:61,grupo:"H",grPorra:"GR_8"},
+  {nombre:"Jordania",ranking:63,grupo:"J",grPorra:"GR_8"},
+  {nombre:"Bosnia y Herzegovina",ranking:65,grupo:"B",grPorra:"GR_8"},
+  {nombre:"Cabo Verde",ranking:69,grupo:"H",grPorra:"GR_8"},
+  {nombre:"Ghana",ranking:74,grupo:"L",grPorra:"GR_8"},
+  {nombre:"Curazao",ranking:82,grupo:"E",grPorra:"GR_8"},
+  {nombre:"Haití",ranking:83,grupo:"C",grPorra:"GR_8"},
+  {nombre:"Nueva Zelanda",ranking:85,grupo:"G",grPorra:"GR_8"}
+];
+
+const GOLEADORES_LISTA = ["Mbappe","Oyar","Kane","Messi","Julian","Vinicius","Haaland","Cristiano","Raphina","Havertz","Lamine","Darwin","Luis Díaz","Salah","Voltemade","Ferran","Dembele","Kean"];
+
+const PORRA_EXACTA = {
+  "Jonatan Baraka":[null,null,null,null,null,null],
+  "Deivid":[null,null,null,null,null,null],
+  "Gaizka Josu":[null,null,null,null,null,null],
+  "Gaizka Nai":[null,null,null,null,null,null],
+  "Hugo":[null,null,null,null,null,null],
+  "Doval":[null,null,null,null,null,null],
+  "Iñaki":[null,null,null,null,null,null],
+  "Javi":[null,null,null,null,null,null],
+  "Jon Danel":[null,null,null,null,null,null],
+  "Jon Paules":[null,null,null,null,null,null],
+  "Jose Garga":[null,null,null,null,null,null],
+  "Josu":[null,null,null,null,null,null],
+  "Juan":[null,null,null,null,null,null],
+  "Kitsu":[null,null,null,null,null,null],
+  "Markel":[null,null,null,null,null,null],
+  "Ruben":[null,null,null,null,null,null],
+  "Pedro Paules":[null,null,null,null,null,null],
+  "Pumuki":[null,null,null,null,null,null],
+  "Ramos":[null,null,null,null,null,null],
+  "Roman":[null,null,null,null,null,null],
+  "Sergio Paules":[null,null,null,null,null,null],
+  "Serlli":[null,null,null,null,null,null],
+  "Sergio Mateo":[null,null,null,null,null,null],
+  "Xabi":[null,null,null,null,null,null],
+  "Gorka":[null,null,null,null,null,null],
+  "Sergio Baraka":[null,null,null,null,null,null]
+};
+
+function loadState() {
+  try {
+    const s = localStorage.getItem('porra_state_v3');
+    if (s) return JSON.parse(s);
+  } catch(e) {}
+  const pts = {};
+  PARTICIPANTES_BASE.forEach(p => { pts[p.nombre] = 0; });
+  pts["Jonatan Baraka"]=2; pts["Deivid"]=-1; pts["Gaizka Josu"]=0;
+  pts["Gaizka Nai"]=0; pts["Hugo"]=0; pts["Doval"]=-1;
+  pts["Iñaki"]=-1; pts["Javi"]=-1; pts["Jon Danel"]=0;
+  pts["Jon Paules"]=-2; pts["Jose Garga"]=2; pts["Josu"]=-1;
+  pts["Juan"]=2; pts["Kitsu"]=-1; pts["Markel"]=0;
+  pts["Ruben"]=0; pts["Pedro Paules"]=2; pts["Pumuki"]=-1;
+  pts["Ramos"]=0; pts["Roman"]=-1; pts["Sergio Paules"]=0;
+  pts["Serlli"]=-1; pts["Sergio Mateo"]=-1; pts["Xabi"]=-1;
+  pts["Gorka"]=0; pts["Sergio Baraka"]=3;
+  const goles = {};
+  GOLEADORES_LISTA.forEach(g => { goles[g] = 0; });
+  const exactoPts = {};
+  PARTICIPANTES_BASE.forEach(p => { exactoPts[p.nombre] = 0; });
+  return { puntos: pts, goles: goles, exactoPts: exactoPts, realResults: { sf1:null, sf2:null, final:null } };
+}
+
+function saveState() {
+  try { localStorage.setItem('porra_state_v3', JSON.stringify(STATE)); } catch(e) {}
+}
+
+let STATE = loadState();
+
+function getRanking() {
+  const arr = PARTICIPANTES_BASE.map(p => ({
+    nombre: p.nombre,
+    puntos: (STATE.puntos[p.nombre]||0) + (STATE.exactoPts[p.nombre]||0)
+  }));
+  arr.sort((a,b) => b.puntos - a.puntos);
+  let rank = 1;
+  for (let i = 0; i < arr.length; i++) {
+    if (i > 0 && arr[i].puntos < arr[i-1].puntos) rank = i+1;
+    arr[i].pos = rank;
+  }
+  return arr;
+}
+
+function ptsClass(p) { return p > 0 ? 'pts-positive' : p < 0 ? 'pts-negative' : 'pts-zero'; }
+function ptsSign(p)  { return p > 0 ? '+'+p : String(p); }
+function initials(n) { return n.split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2); }
+
+function renderClasificacion() {
+  const ranking = getRanking();
+  document.getElementById('stat-lider-pts').textContent = ranking[0].puntos;
+  const top3 = ranking.slice(0,3);
+  const order = [top3[1], top3[0], top3[2]];
+  const posClasses = ['podium-2','podium-1','podium-3'];
+  const heights = ['50px','70px','35px'];
+  const medals = ['🥈','🥇','🥉'];
+  let podiumHTML = '';
+  order.forEach((p,i) => {
+    if (!p) return;
+    podiumHTML += `<div class="podium-item ${posClasses[i]}">
+      <div class="podium-name">${p.nombre}</div>
+      <div class="podium-pts">${ptsSign(p.puntos)}</div>
+      <div class="podium-avatar">${initials(p.nombre)}</div>
+      <div class="podium-block" style="height:${heights[i]}">${medals[i]}</div>
+    </div>`;
+  });
+  document.getElementById('podium-display').innerHTML = podiumHTML;
+  let html = '';
+  ranking.forEach(p => {
+    const posBadge = p.pos <= 3
+      ? `<span class="pos-badge pos-${p.pos}">${p.pos}</span>`
+      : `<span class="pos-badge pos-other">${p.pos}</span>`;
+    html += `<tr>
+      <td>${posBadge}</td>
+      <td>${p.nombre}</td>
+      <td style="text-align:right"><span class="${ptsClass(p.puntos)}" style="font-family:'Oswald',sans-serif;font-size:16px;font-weight:700">${ptsSign(p.puntos)}</span></td>
+      <td style="text-align:center;color:${p.puntos>0?'var(--green)':p.puntos<0?'var(--red)':'var(--muted)'}">${p.puntos>0?'↑':p.puntos<0?'↓':'—'}</td>
+    </tr>`;
+  });
+  document.getElementById('ranking-body').innerHTML = html;
+}
+
+function renderParticipantes() {
+  const ranking = getRanking();
+  const ptsMap = {};
+  ranking.forEach(r => { ptsMap[r.nombre] = r.puntos; });
+  let html = '';
+  PARTICIPANTES_BASE.forEach(p => {
+    const pts = ptsMap[p.nombre]||0;
+    html += `<div class="participant-card">
+      <div class="pc-header">
+        <div class="pc-avatar">${initials(p.nombre)}</div>
+        <div><div class="pc-name">${p.nombre}</div><div style="font-size:11px;color:var(--muted)">PAGADO ✓</div></div>
+        <div class="pc-pts ${ptsClass(pts)}">${ptsSign(pts)}</div>
+      </div>
+      <div class="pc-section-label">Equipos (${p.equipos.length})</div>
+      <div class="pc-teams">${p.equipos.map(e=>`<span class="team-chip">${e}</span>`).join('')}</div>
+      <div class="pc-section-label" style="margin-top:8px">Goleadores</div>
+      <div style="display:flex;flex-wrap:wrap;gap:4px">${p.goleadores.map(g=>`<span class="scorer-chip">⚽ ${g}</span>`).join('')}</div>
+    </div>`;
+  });
+  document.getElementById('participantes-grid').innerHTML = html;
+}
+
+function renderEquipos() {
+  const grupos = {};
+  EQUIPOS_DATA.forEach(eq => {
+    if (!grupos[eq.grPorra]) grupos[eq.grPorra] = [];
+    grupos[eq.grPorra].push(eq);
+  });
+  const grClass = {GR_1:'gr1',GR_2:'gr2',GR_3:'gr3',GR_4:'gr4',GR_5:'gr5',GR_6:'gr6',GR_7:'gr7',GR_8:'gr8'};
+  const grLabels = {GR_1:'Top 1-3',GR_2:'Top 4-6',GR_3:'Top 7-10',GR_4:'Rank 11-17',GR_5:'Rank 18-27',GR_6:'Rank 28-41',GR_7:'Rank 43-55',GR_8:'Rank 57+'};
+  let html = '';
+  Object.keys(grupos).sort().forEach(gr => {
+    html += `<div class="grupo-card"><div class="grupo-header"><span class="grporra-badge ${grClass[gr]}">${gr}</span> ${grLabels[gr]}</div>`;
+    grupos[gr].sort((a,b)=>a.ranking-b.ranking).forEach(eq => {
+      html += `<div class="grupo-equipo"><span>${eq.nombre}</span><span class="eq-ranking ${eq.ranking<=10?'eq-ranking-top':''}">#${eq.ranking} ${eq.grupo}</span></div>`;
+    });
+    html += `</div>`;
+  });
+  document.getElementById('grupos-grid').innerHTML = html;
+}
+
+function renderGoleadores() {
+  const owners = {};
+  PARTICIPANTES_BASE.forEach(p => {
+    p.goleadores.forEach(g => {
+      const k = g.trim();
+      if (!owners[k]) owners[k] = [];
+      owners[k].push(p.nombre);
+    });
+  });
+  const all = [...new Set(GOLEADORES_LISTA)].sort((a,b)=>(STATE.goles[b]||0)-(STATE.goles[a]||0));
+  let html = '';
+  all.forEach(g => {
+    const goles = STATE.goles[g]||0;
+    html += `<tr>
+      <td><div style="font-weight:500">${g}</div>${goles>0?`<div style="font-size:11px;color:var(--gold)">+${goles*2} pts</div>`:''}</td>
+      <td style="text-align:center">${goles>0?`<span class="goals-display">${goles}</span>`:`<span class="goals-zero">0</span>`}</td>
+      <td><div class="owners-list">${(owners[g]||[]).map(o=>`<span class="owner-tag">${o}</span>`).join('')}</div></td>
+    </tr>`;
+  });
+  document.getElementById('scorers-body').innerHTML = html;
+}
+
+function renderExacto() {
+  const rr = STATE.realResults;
+  const matches = [{key:'sf1',label:'Semifinal 1'},{key:'sf2',label:'Semifinal 2'},{key:'final',label:'Final 🏆'}];
+  let rrHTML = '';
+  matches.forEach(m => {
+    const r = rr[m.key];
+    rrHTML += `<div style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:12px;text-align:center">
+      <div style="font-size:11px;color:var(--muted);text-transform:uppercase;margin-bottom:6px">${m.label}</div>
+      ${r?`<div style="font-family:'Oswald',sans-serif;font-size:24px;font-weight:700;color:var(--gold)">${r[0]}–${r[1]}</div>`:`<div style="font-size:13px;color:var(--border)">Por jugar</div>`}
+    </div>`;
+  });
+  document.getElementById('real-results-display').innerHTML = rrHTML;
+  let html = '';
+  PARTICIPANTES_BASE.forEach((p,i) => {
+    const pred = PORRA_EXACTA[p.nombre]||[null,null,null,null,null,null];
+    const pts = STATE.exactoPts[p.nombre]||0;
+    const sc = (l,v) => l===null?`<span class="score-empty">—</span>`:`<span class="score-cell">${l}–${v}</span>`;
+    html += `<tr>
+      <td class="left" style="color:var(--muted);font-size:12px">${i+1}</td>
+      <td class="left">${p.nombre}</td>
+      <td>${sc(pred[0],pred[1])}</td>
+      <td>${sc(pred[2],pred[3])}</td>
+      <td>${sc(pred[4],pred[5])}</td>
+      <td><span class="exacto-pts ${ptsClass(pts)}">${pts>0?'+'+pts:pts}</span></td>
+    </tr>`;
+  });
+  document.getElementById('exacto-body').innerHTML = html;
+}
+
+const ADMIN_PASS = 'caverna2026';
+
+function tryLogin() {
+  if (document.getElementById('admin-password').value === ADMIN_PASS) {
+    document.getElementById('login-container').style.display = 'none';
+    document.getElementById('admin-container').style.display = 'block';
+    populateAdminSelects();
+  } else {
+    document.getElementById('login-error').style.display = 'block';
+  }
+}
+
+function populateAdminSelects() {
+  document.getElementById('admin-equipo').innerHTML = EQUIPOS_DATA.map(e=>`<option value="${e.nombre}">${e.nombre}</option>`).join('');
+  document.getElementById('admin-jugador').innerHTML = GOLEADORES_LISTA.map(g=>`<option value="${g}">${g} (${STATE.goles[g]||0} goles)</option>`).join('');
+}
+
+function showMsg(txt, ok=true) {
+  const el = document.getElementById('admin-msg');
+  el.textContent = txt;
+  el.className = 'alert '+(ok?'alert-success':'alert-error');
+  el.style.display = 'block';
+  setTimeout(()=>{el.style.display='none';},3000);
+}
+
+function applyTeamResult() {
+  const equipo = document.getElementById('admin-equipo').value;
+  const pts = parseInt(document.getElementById('admin-resultado').value);
+  let affected = [];
+  PARTICIPANTES_BASE.forEach(p => {
+    if (p.equipos.map(t=>t.toLowerCase()).includes(equipo.toLowerCase())) {
+      STATE.puntos[p.nombre] = (STATE.puntos[p.nombre]||0) + pts;
+      affected.push(p.nombre);
+    }
+  });
+  saveState(); renderAll();
+  showMsg(`✅ ${equipo}: ${ptsSign(pts)} pts → ${affected.length} afectados`);
+}
+
+function applyGoals() {
+  const jugador = document.getElementById('admin-jugador').value;
+  const goles = parseInt(document.getElementById('admin-goles').value)||1;
+  STATE.goles[jugador] = (STATE.goles[jugador]||0) + goles;
+  let affected = [];
+  PARTICIPANTES_BASE.forEach(p => {
+    if (p.goleadores.map(g=>g.toLowerCase()).includes(jugador.toLowerCase())) {
+      STATE.puntos[p.nombre] = (STATE.puntos[p.nombre]||0) + goles*2;
+      affected.push(p.nombre);
+    }
+  });
+  saveState(); renderAll(); populateAdminSelects();
+  showMsg(`⚽ ${jugador}: +${goles} gol(es) → ${affected.join(', ')}`);
+}
+
+function applyExactScores() {
+  const sf1l=parseInt(document.getElementById('sf1-local').value);
+  const sf1v=parseInt(document.getElementById('sf1-visit').value);
+  const sf2l=parseInt(document.getElementById('sf2-local').value);
+  const sf2v=parseInt(document.getElementById('sf2-visit').value);
+  const fl=parseInt(document.getElementById('final-local').value);
+  const fv=parseInt(document.getElementById('final-visit').value);
+  if (!isNaN(sf1l)&&!isNaN(sf1v)) STATE.realResults.sf1=[sf1l,sf1v];
+  if (!isNaN(sf2l)&&!isNaN(sf2v)) STATE.realResults.sf2=[sf2l,sf2v];
+  if (!isNaN(fl)&&!isNaN(fv)) STATE.realResults.final=[fl,fv];
+  PARTICIPANTES_BASE.forEach(p => { STATE.exactoPts[p.nombre]=0; });
+  PARTICIPANTES_BASE.forEach(p => {
+    const pred=PORRA_EXACTA[p.nombre]||[null,null,null,null,null,null];
+    let bonus=0;
+    if (STATE.realResults.sf1&&pred[0]!==null&&pred[0]==STATE.realResults.sf1[0]&&pred[1]==STATE.realResults.sf1[1]) bonus+=5;
+    if (STATE.realResults.sf2&&pred[2]!==null&&pred[2]==STATE.realResults.sf2[0]&&pred[3]==STATE.realResults.sf2[1]) bonus+=5;
+    if (STATE.realResults.final&&pred[4]!==null&&pred[4]==STATE.realResults.final[0]&&pred[5]==STATE.realResults.final[1]) bonus+=5;
+    STATE.exactoPts[p.nombre]=bonus;
+  });
+  saveState(); renderAll();
+  showMsg('🎯 Resultados exactos aplicados.');
+}
+
+function resetAll() {
+  if (!confirm('¿Resetear TODOS los puntos a 0?')) return;
+  PARTICIPANTES_BASE.forEach(p => { STATE.puntos[p.nombre]=0; STATE.exactoPts[p.nombre]=0; });
+  GOLEADORES_LISTA.forEach(g => { STATE.goles[g]=0; });
+  STATE.realResults={sf1:null,sf2:null,final:null};
+  saveState(); renderAll();
+  showMsg('⚠️ Reseteado.');
+}
+
+function renderAll() {
+  renderClasificacion();
+  renderParticipantes();
+  renderEquipos();
+  renderGoleadores();
+  renderExacto();
+}
+
+document.getElementById('tabs').addEventListener('click', e => {
+  const btn = e.target.closest('.tab-btn');
+  if (!btn) return;
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('tab-'+btn.dataset.tab).classList.add('active');
+});
+
+renderAll();
+</script>
+</body>
+</html>
