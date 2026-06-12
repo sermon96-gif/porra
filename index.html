@@ -768,8 +768,7 @@
         <tr>
           <th style="width:40px">Pos</th>
           <th>Participante</th>
-          <th style="width:70px;text-align:right">Puntos</th>
-          <th style="width:50px;text-align:center">🏅</th>
+          <th style="width:70px;text-align:right">Pts</th>
         </tr>
       </thead>
       <tbody id="ranking-body"></tbody>
@@ -1365,7 +1364,6 @@ function renderClasificacion() {
             ${ptsSign(p.puntos)}
           </span>
         </td>
-        <td style="text-align:center;color:var(--muted);font-size:12px;font-family:'Oswald',sans-serif;font-weight:600">${p.pos}º</td>
       </tr>`;
   });
   document.getElementById('ranking-body').innerHTML = html;
