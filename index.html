@@ -1240,30 +1240,30 @@ function loadState() {
   // Valores iniciales del Excel (J1 ya tiene algunos resultados)
   pts["Jonatan Baraka"] = 2;
   pts["Deivid"]         = -1;
-  pts["Gaizka Josu"]    = 3;
-  pts["Gaizka Nai"]     = 3;
-  pts["Hugo"]           = 3;
+  pts["Gaizka Josu"]    = 0;
+  pts["Gaizka Nai"]     = 0;
+  pts["Hugo"]           = 0;
   pts["Doval"]          = -1;
   pts["Iñaki"]          = -1;
   pts["Javi"]           = -1;
-  pts["Jon Danel"]      = 3;
+  pts["Jon Danel"]      = 0;
   pts["Jon Paules"]     = -2;
   pts["Jose Garga"]     = 2;
-  pts["Josu"]           = 2;
+  pts["Josu"]           = -1;
   pts["Juan"]           = 2;
   pts["Kitsu"]          = -1;
   pts["Markel"]         = 0;
-  pts["Ruben"]          = 3;
-  pts["Pedro Paules"]   = 5;
-  pts["Pumuki"]         = 2;
-  pts["Ramos"]          = 3;
-  pts["Roman"]          = 2;
+  pts["Ruben"]          = 0;
+  pts["Pedro Paules"]   = 2;
+  pts["Pumuki"]         = -1;
+  pts["Ramos"]          = 0;
+  pts["Roman"]          = -1;
   pts["Sergio Paules"]  = 0;
-  pts["Serlli"]         = 2;
-  pts["Sergio Mateo"]   = 2;
-  pts["Xabi"]           = 2;
+  pts["Serlli"]         = -1;
+  pts["Sergio Mateo"]   = -1;
+  pts["Xabi"]           = -1;
   pts["Gorka"]          = 0;
-  pts["Sergio Baraka"]  = 6;
+  pts["Sergio Baraka"]  = 3;
 
   const goles = {};
   GOLEADORES_LISTA.forEach(g => { goles[g] = 0; });
@@ -1356,8 +1356,6 @@ function renderClasificacion() {
     const posBadge = p.pos <= 3
       ? `<span class="pos-badge pos-${p.pos}">${p.pos}</span>`
       : `<span class="pos-badge pos-other">${p.pos}</span>`;
-    const trend = p.puntos > 0 ? '↑' : p.puntos < 0 ? '↓' : '—';
-    const trendColor = p.puntos > 0 ? 'var(--green)' : p.puntos < 0 ? 'var(--red)' : 'var(--muted)';
     html += `
       <tr>
         <td>${posBadge}</td>
@@ -1367,7 +1365,7 @@ function renderClasificacion() {
             ${ptsSign(p.puntos)}
           </span>
         </td>
-        <td style="text-align:center;color:${trendColor};font-size:16px">${trend}</td>
+        <td style="text-align:center;color:var(--muted);font-size:12px;font-family:'Oswald',sans-serif;font-weight:600">${p.pos}º</td>
       </tr>`;
   });
   document.getElementById('ranking-body').innerHTML = html;
