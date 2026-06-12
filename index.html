@@ -706,8 +706,8 @@
     .stat-row { grid-template-columns: repeat(3, 1fr); }
     .grupos-grid { grid-template-columns: repeat(2, 1fr); }
     .admin-grid-2 { grid-template-columns: 1fr; }
-    .ranking-table th:nth-child(3),
-    .ranking-table td:nth-child(3) { display: none; }
+    .ranking-table th:nth-child(4),
+    .ranking-table td:nth-child(4) { display: none; }
   }
 </style>
 </head>
@@ -766,9 +766,9 @@
     <table class="ranking-table">
       <thead>
         <tr>
-          <th style="width:40px">Pos</th>
+          <th style="width:36px">Pos</th>
           <th>Participante</th>
-          <th style="width:70px;text-align:right">Pts</th>
+          <th style="width:50px;text-align:right;padding-right:8px">Pts</th>
         </tr>
       </thead>
       <tbody id="ranking-body"></tbody>
@@ -1357,9 +1357,9 @@ function renderClasificacion() {
       : `<span class="pos-badge pos-other">${p.pos}</span>`;
     html += `
       <tr>
-        <td>${posBadge}</td>
-        <td class="participant-name">${p.nombre}</td>
-        <td style="text-align:right">
+        <td style="width:36px">${posBadge}</td>
+        <td class="participant-name" style="font-size:13px">${p.nombre}</td>
+        <td style="text-align:right;padding-right:8px;white-space:nowrap">
           <span class="${ptsClass(p.puntos)}" style="font-family:'Oswald',sans-serif;font-size:16px;font-weight:700">
             ${ptsSign(p.puntos)}
           </span>
