@@ -238,19 +238,19 @@
       <div class="podium-card p2">
         <div class="podium-medal">🥈</div>
         <div class="podium-name">Sergio Baraka</div>
-        <div class="podium-pts">196</div>
+        <div class="podium-pts">202</div>
         <div class="podium-label">puntos</div>
       </div>
       <div class="podium-card p1">
         <div class="podium-medal">🥇</div>
         <div class="podium-name">Jonatan Baraka</div>
-        <div class="podium-pts">215</div>
+        <div class="podium-pts">216</div>
         <div class="podium-label">puntos</div>
       </div>
       <div class="podium-card p3">
         <div class="podium-medal">🥉</div>
         <div class="podium-name">Ruben</div>
-        <div class="podium-pts">188</div>
+        <div class="podium-pts">196</div>
         <div class="podium-label">puntos</div>
       </div>
     </div>
@@ -340,14 +340,14 @@
 <script>
 const TEAM_PTS = {
   "Francia": 30,
-  "España": 28,
-  "Argentina": 26,
-  "Inglaterra": 26,
+  "España": 22,
+  "Argentina": 22,
+  "Inglaterra": 22,
   "Portugal": 11,
   "Brasil": 15,
   "Paises Bajos": 11,
   "Marruecos": 19,
-  "Belgica": 17,
+  "Belgica": 18,
   "Alemania": 9,
   "Croacia": 9,
   "Colombia": 17,
@@ -356,7 +356,7 @@ const TEAM_PTS = {
   "Estados Unidos": 13,
   "Uruguay": 1,
   "Japon": 7,
-  "Suiza": 21,
+  "Suiza": 20,
   "Iran": 3,
   "Turquia": 1,
   "Ecuador": 5,
@@ -366,7 +366,7 @@ const TEAM_PTS = {
   "Argelia": 5,
   "Egipto": 11,
   "Canada": 11,
-  "Noruega": 21,
+  "Noruega": 20,
   "Panama": -3,
   "Costa de Marfil": 7,
   "Suecia": 5,
@@ -404,7 +404,7 @@ const GOL_PTS = {
   "Darwin": 0,
   "Luis Díaz": 2,
   "Salah": 2,
-  "Dembele": 10,
+  "Dembele": 8,
   "Voltemade": 0
 };
 function teamPtsLabel(team) {
@@ -419,61 +419,61 @@ function golPtsLabel(gol) {
 }
 
 const RANKING = [
-  { pos: 1, name: "Jonatan Baraka", pts: 215 },
-  { pos: 2, name: "Sergio Baraka", pts: 196 },
-  { pos: 3, name: "Ruben", pts: 188 },
-  { pos: 4, name: "Pedro Paules", pts: 184 },
-  { pos: 5, name: "Markel", pts: 182 },
-  { pos: 5, name: "Jon Danel", pts: 182 },
-  { pos: 7, name: "Iñaki", pts: 177 },
+  { pos: 1, name: "Jonatan Baraka", pts: 216 },
+  { pos: 2, name: "Sergio Baraka", pts: 202 },
+  { pos: 3, name: "Ruben", pts: 196 },
+  { pos: 4, name: "Pedro Paules", pts: 190 },
+  { pos: 5, name: "Jon Danel", pts: 188 },
+  { pos: 6, name: "Markel", pts: 183 },
+  { pos: 7, name: "Iñaki", pts: 178 },
+  { pos: 8, name: "Serlli", pts: 174 },
   { pos: 8, name: "Gorka", pts: 174 },
-  { pos: 9, name: "Doval", pts: 172 },
-  { pos: 10, name: "Jose Garga", pts: 170 },
-  { pos: 11, name: "Jon Paules", pts: 169 },
-  { pos: 12, name: "Gaizka Nai", pts: 166 },
-  { pos: 12, name: "Serlli", pts: 166 },
-  { pos: 14, name: "Juan", pts: 162 },
-  { pos: 14, name: "Sergio Mateo", pts: 162 },
-  { pos: 16, name: "Josu", pts: 158 },
-  { pos: 17, name: "Pumuki", pts: 156 },
-  { pos: 18, name: "Deivid", pts: 154 },
-  { pos: 18, name: "Javi", pts: 154 },
-  { pos: 20, name: "Sergio Paules", pts: 150 },
-  { pos: 21, name: "Ramos", pts: 148 },
-  { pos: 22, name: "Xabi", pts: 138 },
-  { pos: 23, name: "Kitsu", pts: 132 },
-  { pos: 24, name: "Hugo", pts: 130 },
-  { pos: 24, name: "Gaizka Josu", pts: 130 },
-  { pos: 26, name: "Roman", pts: 128 },
+  { pos: 10, name: "Gaizka Nai", pts: 172 },
+  { pos: 11, name: "Doval", pts: 171 },
+  { pos: 11, name: "Jose Garga", pts: 171 },
+  { pos: 13, name: "Jon Paules", pts: 170 },
+  { pos: 14, name: "Sergio Mateo", pts: 168 },
+  { pos: 15, name: "Josu", pts: 166 },
+  { pos: 16, name: "Pumuki", pts: 164 },
+  { pos: 17, name: "Juan", pts: 163 },
+  { pos: 18, name: "Deivid", pts: 158 },
+  { pos: 19, name: "Ramos", pts: 156 },
+  { pos: 20, name: "Javi", pts: 155 },
+  { pos: 21, name: "Sergio Paules", pts: 150 },
+  { pos: 22, name: "Xabi", pts: 146 },
+  { pos: 23, name: "Gaizka Josu", pts: 138 },
+  { pos: 23, name: "Hugo", pts: 138 },
+  { pos: 25, name: "Roman", pts: 136 },
+  { pos: 26, name: "Kitsu", pts: 131 },
 ];
 
 const PARTICIPANTS = [
-  { name: "Jonatan Baraka", pts: 215, teams: ["Francia","Inglaterra","Alemania","Mexico","Japon","Suiza","Noruega","Costa de Marfil","Escocia","Sudáfrica","Bosnia y Herzegovina"], gols: ["Messi","Mbappe","Kane","Haaland","Oyar"] },
-  { name: "Deivid", pts: 154, teams: ["Francia","Brasil","Alemania","Colombia","Iran","Turquia","Noruega","Argelia","Qatar","Sudáfrica","Nueva Zelanda"], gols: ["Haaland","Mbappe","Dembele","Vinicius","Luis Díaz"] },
-  { name: "Gaizka Josu", pts: 130,  teams: ["España","Portugal","Alemania","Senegal","Japon","Ecuador","Noruega","Paraguay","Tunez","Ghana","Irak"], gols: ["Mbappe","Kane","Oyar","Voltemade","Julian"] },
-  { name: "Gaizka Nai", pts: 166, teams: ["España","Brasil","Alemania","Colombia","Japon","Corea del Sur","Noruega","Paraguay","Qatar","Arabia Saudita","Bosnia y Herzegovina"], gols: ["Mbappe","Kane","Lamine","Messi","Vinicius"] },
-  { name: "Hugo", pts: 130,  teams: ["España","Portugal","Alemania","Uruguay","Japon","Ecuador","Noruega","Canada","Escocia","Bosnia y Herzegovina","Ghana"], gols: ["Mbappe","Julian","Oyar","Raphina","Luis Díaz"] },
-  { name: "Doval", pts: 172, teams: ["Francia","Portugal","Marruecos","Croacia","Turquia","Suiza","Noruega","Republica Checa","Tunez","Bosnia y Herzegovina","RD Congo"], gols: ["Mbappe","Kane","Haaland","Cristiano","Vinicius"] },
-  { name: "Iñaki", pts: 177,  teams: ["Francia","Inglaterra","Alemania","Senegal","Japon","Suiza","Noruega","Republica Checa","Qatar","Ghana","Arabia Saudita"], gols: ["Mbappe","Kane","Oyar","Cristiano","Haaland"] },
-  { name: "Javi", pts: 154,  teams: ["Francia","Portugal","Alemania","Croacia","Suiza","Turquia","Noruega","Republica Checa","Escocia","Irak","Curazao"], gols: ["Mbappe","Kane","Cristiano","Messi","Oyar"] },
-  { name: "Jon Danel", pts: 182, teams: ["España","Portugal","Alemania","Colombia","Ecuador","Japon","Noruega","Egipto","Escocia","Arabia Saudita","Bosnia y Herzegovina"], gols: ["Kane","Mbappe","Messi","Vinicius","Haaland"] },
-  { name: "Jon Paules", pts: 169,  teams: ["Francia","Inglaterra","Marruecos","Uruguay","Suiza","Japon","Suecia","Republica Checa","Escocia","Ghana","Sudáfrica"], gols: ["Mbappe","Kane","Haaland","Julian","Oyar"] },
-  { name: "Jose Garga", pts: 170, teams: ["Francia","Portugal","Alemania","Mexico","Japon","Ecuador","Noruega","Egipto","Qatar","Bosnia y Herzegovina","Sudáfrica"], gols: ["Mbappe","Kane","Haaland","Oyar","Julian"] },
-  { name: "Josu", pts: 158, teams: ["España","Brasil","Marruecos","Senegal","Turquia","Iran","Noruega","Republica Checa","Escocia","Arabia Saudita","Ghana"], gols: ["Mbappe","Kane","Messi","Oyar","Vinicius"] },
-  { name: "Juan", pts: 162, teams: ["Francia","Portugal","Alemania","Mexico","Turquia","Suiza","Argelia","Canada","Escocia","Bosnia y Herzegovina","Sudáfrica"], gols: ["Mbappe","Kane","Havertz","Cristiano","Oyar"] },
-  { name: "Kitsu", pts: 132,  teams: ["Francia","Portugal","Alemania","Colombia","Suiza","Austria","Egipto","Republica Checa","Qatar","Jordania","Bosnia y Herzegovina"], gols: ["Havertz","Salah","Kane","Julian","Vinicius"] },
-  { name: "Markel", pts: 182, teams: ["Francia","Brasil","Alemania","Colombia","Suiza","Turquia","Canada","Egipto","Tunez","Bosnia y Herzegovina","Ghana"], gols: ["Mbappe","Kane","Messi","Oyar","Vinicius"] },
-  { name: "Ruben", pts: 188, teams: ["España","Brasil","Alemania","Colombia","Suiza","Ecuador","Canada","Noruega","Escocia","Arabia Saudita","Bosnia y Herzegovina"], gols: ["Mbappe","Kane","Haaland","Oyar","Cristiano"] },
-  { name: "Pedro Paules", pts: 184, teams: ["España","Brasil","Alemania","Mexico","Ecuador","Japon","Noruega","Argelia","Escocia","Ghana","Sudáfrica"], gols: ["Mbappe","Kane","Haaland","Vinicius","Messi"] },
-  { name: "Pumuki", pts: 156,  teams: ["España","Portugal","Paises Bajos","Colombia","Ecuador","Turquia","Republica Checa","Noruega","Escocia","Bosnia y Herzegovina","Ghana"], gols: ["Mbappe","Kane","Oyar","Messi","Julian"] },
-  { name: "Ramos", pts: 148,  teams: ["España","Portugal","Marruecos","Uruguay","Japon","Ecuador","Noruega","Canada","Escocia","Bosnia y Herzegovina","Arabia Saudita"], gols: ["Mbappe","Kane","Oyar","Darwin","Luis Díaz"] },
-  { name: "Roman", pts: 128,  teams: ["España","Portugal","Alemania","Uruguay","Ecuador","Japon","Suecia","Republica Checa","Escocia","Bosnia y Herzegovina","Ghana"], gols: ["Kane","Messi","Raphina","Mbappe","Oyar"] },
+  { name: "Jonatan Baraka", pts: 216, teams: ["Francia","Inglaterra","Alemania","Mexico","Japon","Suiza","Noruega","Costa de Marfil","Escocia","Sudáfrica","Bosnia y Herzegovina"], gols: ["Messi","Mbappe","Kane","Haaland","Oyar"] },
+  { name: "Deivid", pts: 158, teams: ["Francia","Brasil","Alemania","Colombia","Iran","Turquia","Noruega","Argelia","Qatar","Sudáfrica","Nueva Zelanda"], gols: ["Haaland","Mbappe","Dembele","Vinicius","Luis Díaz"] },
+  { name: "Gaizka Josu", pts: 138,  teams: ["España","Portugal","Alemania","Senegal","Japon","Ecuador","Noruega","Paraguay","Tunez","Ghana","Irak"], gols: ["Mbappe","Kane","Oyar","Voltemade","Julian"] },
+  { name: "Gaizka Nai", pts: 172, teams: ["España","Brasil","Alemania","Colombia","Japon","Corea del Sur","Noruega","Paraguay","Qatar","Arabia Saudita","Bosnia y Herzegovina"], gols: ["Mbappe","Kane","Lamine","Messi","Vinicius"] },
+  { name: "Hugo", pts: 138,  teams: ["España","Portugal","Alemania","Uruguay","Japon","Ecuador","Noruega","Canada","Escocia","Bosnia y Herzegovina","Ghana"], gols: ["Mbappe","Julian","Oyar","Raphina","Luis Díaz"] },
+  { name: "Doval", pts: 171, teams: ["Francia","Portugal","Marruecos","Croacia","Turquia","Suiza","Noruega","Republica Checa","Tunez","Bosnia y Herzegovina","RD Congo"], gols: ["Mbappe","Kane","Haaland","Cristiano","Vinicius"] },
+  { name: "Iñaki", pts: 178,  teams: ["Francia","Inglaterra","Alemania","Senegal","Japon","Suiza","Noruega","Republica Checa","Qatar","Ghana","Arabia Saudita"], gols: ["Mbappe","Kane","Oyar","Cristiano","Haaland"] },
+  { name: "Javi", pts: 155,  teams: ["Francia","Portugal","Alemania","Croacia","Suiza","Turquia","Noruega","Republica Checa","Escocia","Irak","Curazao"], gols: ["Mbappe","Kane","Cristiano","Messi","Oyar"] },
+  { name: "Jon Danel", pts: 188, teams: ["España","Portugal","Alemania","Colombia","Ecuador","Japon","Noruega","Egipto","Escocia","Arabia Saudita","Bosnia y Herzegovina"], gols: ["Kane","Mbappe","Messi","Vinicius","Haaland"] },
+  { name: "Jon Paules", pts: 170,  teams: ["Francia","Inglaterra","Marruecos","Uruguay","Suiza","Japon","Suecia","Republica Checa","Escocia","Ghana","Sudáfrica"], gols: ["Mbappe","Kane","Haaland","Julian","Oyar"] },
+  { name: "Jose Garga", pts: 171, teams: ["Francia","Portugal","Alemania","Mexico","Japon","Ecuador","Noruega","Egipto","Qatar","Bosnia y Herzegovina","Sudáfrica"], gols: ["Mbappe","Kane","Haaland","Oyar","Julian"] },
+  { name: "Josu", pts: 166, teams: ["España","Brasil","Marruecos","Senegal","Turquia","Iran","Noruega","Republica Checa","Escocia","Arabia Saudita","Ghana"], gols: ["Mbappe","Kane","Messi","Oyar","Vinicius"] },
+  { name: "Juan", pts: 163, teams: ["Francia","Portugal","Alemania","Mexico","Turquia","Suiza","Argelia","Canada","Escocia","Bosnia y Herzegovina","Sudáfrica"], gols: ["Mbappe","Kane","Havertz","Cristiano","Oyar"] },
+  { name: "Kitsu", pts: 131,  teams: ["Francia","Portugal","Alemania","Colombia","Suiza","Austria","Egipto","Republica Checa","Qatar","Jordania","Bosnia y Herzegovina"], gols: ["Havertz","Salah","Kane","Julian","Vinicius"] },
+  { name: "Markel", pts: 183, teams: ["Francia","Brasil","Alemania","Colombia","Suiza","Turquia","Canada","Egipto","Tunez","Bosnia y Herzegovina","Ghana"], gols: ["Mbappe","Kane","Messi","Oyar","Vinicius"] },
+  { name: "Ruben", pts: 196, teams: ["España","Brasil","Alemania","Colombia","Suiza","Ecuador","Canada","Noruega","Escocia","Arabia Saudita","Bosnia y Herzegovina"], gols: ["Mbappe","Kane","Haaland","Oyar","Cristiano"] },
+  { name: "Pedro Paules", pts: 190, teams: ["España","Brasil","Alemania","Mexico","Ecuador","Japon","Noruega","Argelia","Escocia","Ghana","Sudáfrica"], gols: ["Mbappe","Kane","Haaland","Vinicius","Messi"] },
+  { name: "Pumuki", pts: 164,  teams: ["España","Portugal","Paises Bajos","Colombia","Ecuador","Turquia","Republica Checa","Noruega","Escocia","Bosnia y Herzegovina","Ghana"], gols: ["Mbappe","Kane","Oyar","Messi","Julian"] },
+  { name: "Ramos", pts: 156,  teams: ["España","Portugal","Marruecos","Uruguay","Japon","Ecuador","Noruega","Canada","Escocia","Bosnia y Herzegovina","Arabia Saudita"], gols: ["Mbappe","Kane","Oyar","Darwin","Luis Díaz"] },
+  { name: "Roman", pts: 136,  teams: ["España","Portugal","Alemania","Uruguay","Ecuador","Japon","Suecia","Republica Checa","Escocia","Bosnia y Herzegovina","Ghana"], gols: ["Kane","Messi","Raphina","Mbappe","Oyar"] },
   { name: "Sergio Paules", pts: 150, teams: ["Argentina","Brasil","Alemania","Uruguay","Japon","Ecuador","Noruega","Suecia","Tunez","Bosnia y Herzegovina","Ghana"], gols: ["Mbappe","Kane","Haaland","Cristiano","Vinicius"] },
-  { name: "Serlli", pts: 166, teams: ["España","Portugal","Paises Bajos","Colombia","Ecuador","Turquia","Noruega","Egipto","Qatar","Arabia Saudita","Sudáfrica"], gols: ["Mbappe","Oyar","Kane","Cristiano","Messi"] },
-  { name: "Sergio Mateo", pts: 162, teams: ["España","Brasil","Paises Bajos","Estados Unidos","Japon","Suiza","Egipto","Canada","RD Congo","Bosnia y Herzegovina","Sudáfrica"], gols: ["Mbappe","Raphina","Lamine","Kane","Julian"] },
-  { name: "Xabi", pts: 138,  teams: ["España","Portugal","Marruecos","Colombia","Japon","Turquia","Egipto","Republica Checa","Qatar","Bosnia y Herzegovina","Ghana"], gols: ["Mbappe","Ferran","Kane","Julian","Oyar"] },
+  { name: "Serlli", pts: 174, teams: ["España","Portugal","Paises Bajos","Colombia","Ecuador","Turquia","Noruega","Egipto","Qatar","Arabia Saudita","Sudáfrica"], gols: ["Mbappe","Oyar","Kane","Cristiano","Messi"] },
+  { name: "Sergio Mateo", pts: 168, teams: ["España","Brasil","Paises Bajos","Estados Unidos","Japon","Suiza","Egipto","Canada","RD Congo","Bosnia y Herzegovina","Sudáfrica"], gols: ["Mbappe","Raphina","Lamine","Kane","Julian"] },
+  { name: "Xabi", pts: 146,  teams: ["España","Portugal","Marruecos","Colombia","Japon","Turquia","Egipto","Republica Checa","Qatar","Bosnia y Herzegovina","Ghana"], gols: ["Mbappe","Ferran","Kane","Julian","Oyar"] },
   { name: "Gorka", pts: 174, teams: ["Argentina","Brasil","Paises Bajos","Croacia","Turquia","Suiza","Noruega","Canada","Qatar","Ghana","Arabia Saudita"], gols: ["Mbappe","Kane","Haaland","Cristiano","Vinicius"] },
-  { name: "Sergio Baraka", pts: 196, teams: ["España","Portugal","Alemania","Mexico","Japon","Suiza","Noruega","Canada","Escocia","Ghana","Sudáfrica"], gols: ["Mbappe","Kane","Haaland","Messi","Lamine"] },
+  { name: "Sergio Baraka", pts: 202, teams: ["España","Portugal","Alemania","Mexico","Japon","Suiza","Noruega","Canada","Escocia","Ghana","Sudáfrica"], gols: ["Mbappe","Kane","Haaland","Messi","Lamine"] },
 ];
 
 const GRUPOS_PORRA = {
