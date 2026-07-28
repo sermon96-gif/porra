@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Día 1 (10/08)</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            padding: 30px 15px;
+            margin: 0;
+        }
+        .container {
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 6px 24px rgba(0,0,0,0.08);
+            padding: 25px 20px;
+            max-width: 1050px;
+            width: 100%;
+            overflow-x: auto;
+        }
+        h1 {
+            text-align: center;
+            color: #0b1a33;
+            font-size: 28px;
+            margin: 0 0 20px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        th {
+            background: #0b1a33;
+            color: white;
+            padding: 14px 12px;
+            text-align: left;
+            border: 2px solid #0b1a33;
+        }
+        td {
+            padding: 12px 10px;
+            border: 2px solid #dde3ed;
+            vertical-align: middle;
+        }
+        .bloque {
+            font-weight: 700;
+            background: #f4f7fc;
+            color: #0b1a33;
+            text-align: center;
+            min-width: 130px;
+            font-size: 13px;
+            line-height: 1.3;
+        }
+        .ejercicio { font-weight: 500; color: #1a2a4a; }
+        .volumen {
+            text-align: center;
+            font-weight: 500;
+            color: #1f3a5f;
+            min-width: 100px;
+            white-space: nowrap;
+        }
+        .video-thumb {
+            text-align: center;
+            min-width: 120px;
+        }
+        .video-thumb a {
+            display: inline-block;
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.12);
+            transition: transform 0.2s, box-shadow 0.2s;
+            line-height: 0;
+        }
+        .video-thumb a:hover {
+            transform: scale(1.04);
+            box-shadow: 0 4px 18px rgba(0,0,0,0.20);
+        }
+        .video-thumb img {
+            width: 120px;
+            height: auto;
+            display: block;
+        }
+        .video-thumb a::after {
+            content: "▶";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 34px;
+            color: white;
+            background: rgba(255, 0, 0, 0.85);
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid rgba(255,255,255,0.3);
+            padding-left: 5px;
+        }
+        .video-thumb a:hover::after {
+            background: #ff0000;
+            transform: translate(-50%, -50%) scale(1.08);
+        }
+        .sin-video { color: #aaa; font-size: 20px; }
+
+        /* Estilos específicos para la galería de imágenes de movilidad */
+        .movilidad-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px; /* Espacio entre imágenes */
+            justify-content: flex-start;
+        }
+        .movilidad-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 60px; /* Ancho de cada imagen pequeña */
+        }
+        .movilidad-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            display: block;
+        }
+        .movilidad-item span {
+            font-size: 10px;
+            color: #555;
+            margin-top: 2px;
+        }
+
+        @media (max-width: 750px) {
+            .video-thumb img { width: 85px; }
+            .video-thumb a::after { width: 40px; height: 40px; font-size: 24px; }
+            .movilidad-item { width: 50px; }
+        }
+        @media (max-width: 500px) {
+            .video-thumb img { width: 65px; }
+            .video-thumb a::after { width: 32px; height: 32px; font-size: 18px; padding-left: 3px; }
+            .movilidad-gallery { gap: 3px; }
+            .movilidad-item { width: 40px; }
+            .movilidad-item span { font-size: 8px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>📅 Día 1 (10/08)</h1>
+    <table>
+        <thead>
+            <tr><th>BLOQUE</th><th>EJERCICIO</th><th>VOLUMEN</th><th>VIDEO</th></tr>
+        </thead>
+        <tbody>
+            <!-- ACTIVACIÓN -->
+            <tr>
+                <td class="bloque" rowspan="5"><strong>ACTIVACIÓN<br>(2 vueltas)</strong></td>
+                <td class="ejercicio">Movilidad</td>
+                <td class="volumen">10 min</td>
+                <td class="video-thumb">
+                    <a href="https://youtube.com/shorts/C8MGAsAnUM8?feature=shared" target="_blank">
+                        <img src="https://img.youtube.com/vi/C8MGAsAnUM8/mqdefault.jpg" onerror="this.src='https://img.youtube.com/vi/C8MGAsAnUM8/default.jpg'" alt="Movilidad">
+                    </a>
+                </td>
+            </tr>
+            <!-- Fila especial para las fotos de movilidad consecutivas -->
+            <tr>
+                <td colspan="3">
+                    <div class="movilidad-gallery">
+                        <div class="movilidad-item"><img src="image_0.png" alt="Movilidad 1"><span>1</span></div>
+                        <div class="movilidad-item"><img src="image_1.png" alt="Movilidad 2"><span>2</span></div>
+                        <div class="movilidad-item"><img src="image_2.png" alt="Movilidad 3"><span>3</span></div>
+                        <div class="movilidad-item"><img src="image_3.png" alt="Movilidad 4"><span>4</span></div>
+                        <div class="movilidad-item"><img src="image_4.png" alt="Movilidad 5"><span>5</span></div>
+                        <div class="movilidad-item"><img src="image_5.png" alt="Movilidad 6"><span>6</span></div>
+                        <div class="movilidad-item"><img src="image_6.png" alt="Movilidad 7"><span>7</span></div>
+                        <div class="movilidad-item"><img src="image_7.png" alt="Movilidad 8"><span>8</span></div>
+                        <div class="movilidad-item"><img src="image_8.png" alt="Movilidad 9"><span>9</span></div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="ejercicio">Bird Dog</td>
+                <td class="volumen">2x(10/lado)</td>
+                <td class="video-thumb">
+                    <a href="https://youtube.com/shorts/e94rCZbcTHE?feature=shared" target="_blank">
+                        <img src="https://img.youtube.com/vi/e94rCZbcTHE/mqdefault.jpg" onerror="this.src='https://img.youtube.com/vi/e94rCZbcTHE/default.jpg'" alt="Bird Dog">
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td class="ejercicio">Press Pallof con goma</td>
+                <td class="volumen">2x15</td>
+                <td class="video-thumb">
+                    <a href="https://youtube.com/shorts/SCz3xP9ItqI?feature=shared" target="_blank">
+                        <img src="https://img.youtube.com/vi/SCz3xP9ItqI/mqdefault.jpg" onerror="this.src='https://img.youtube.com/vi/SCz3xP9ItqI/default.jpg'" alt="Press Pallof">
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td class="ejercicio">Sentadilla propio peso</td>
+                <td class="volumen">1x20</td>
+                <td class="video-thumb">
+                    <a href="https://youtu.be/8TrGP-X1G4E?feature=shared" target="_blank">
+                        <img src="https://img.youtube.com/vi/8TrGP-X1G4E/mqdefault.jpg" onerror="this.src='https://img.youtube.com/vi/8TrGP-X1G4E/default.jpg'" alt="Sentadilla">
+                    </a>
+                </td>
+            </tr>
+
+            <!-- BLOQUE 1 -->
+            <tr>
+                <td class="bloque" rowspan="3"><strong>BLOQUE 1.<br>PATRÓN DECELERATIVO<br>(4 vueltas)</strong></td>
+                <td class="ejercicio">Skater Squat</td>
+                <td class="volumen">1x(8/lado)</td>
+                <td class="video-thumb">
+                    <a href="https://youtu.be/B_elmAB4W-Q?feature=shared" target="_blank">
+                        <img src="https://img.youtube.com/vi/B_elmAB4W-Q/mqdefault.jpg" onerror="this.src='https://img.youtube.com/vi/B_elmAB4W-Q/default.jpg'" alt="Skater Squat">
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td class="ejercicio">Press Landmine Half Kneeling</td>
+                <td class="volumen">1x(10/lado)</td>
+                <td class="video-thumb">
+                    <a href="https://youtube.com/shorts/6NPvsEAbl_M?feature=shared" target="_blank">
+                        <img src="https://img.youtube.com/vi/6NPvsEAbl_M/mqdefault.jpg" onerror="this.src='https://img.youtube.com/vi/6NPvsEAbl_M/default.jpg'" alt="Landmine">
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td class="ejercicio">Split Lateral</td>
+                <td class="volumen">1x(10/lado)</td>
+                <td class="video-thumb">
+                    <a href="https://youtube.com/shorts/RH7XWaPBbWs?feature=shared" target="_blank">
+                        <img src="https://img.youtube.com/vi/RH7XWaPBbWs/mqdefault.jpg" onerror="this.src='https://img.youtube.com/vi/RH7XWaPBbWs/default.jpg'" alt="Split Lateral">
+                    </a>
+                </td>
+            </tr>
+
+            <!-- BLOQUE 2 -->
+            <tr>
+                <td class="bloque"><strong>BLOQUE 2.<br>CIRCUITO<br>(2 vueltas)</strong></td>
+                <td class="ejercicio">Circuito mecánicas decelerativas</td>
+                <td class="volumen">8 reps./ejercicio</td>
+                <td class="video-thumb">
+                    <a href="https://youtube.com/shorts/b8uAzSvRLeI?feature=shared" target="_blank">
+                        <img src="https://img.youtube.com/vi/b8uAzSvRLeI/mqdefault.jpg" onerror="this.src='https://img.youtube.com/vi/b8uAzSvRLeI/default.jpg'" alt="Circuito">
+                    </a>
+                </td>
+            </tr>
+
+            <!-- BLOQUE 3 -->
+            <tr>
+                <td class="bloque"><strong>BLOQUE 3.<br>CARRERA</strong></td>
+                <td class="ejercicio" style="color:#999;font-style:italic;">(no especificado)</td>
+                <td class="volumen" style="color:#999;font-style:italic;">(no especificado)</td>
+                <td class="video-thumb sin-video">—</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
